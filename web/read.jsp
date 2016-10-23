@@ -10,6 +10,12 @@
     
     <body>
         <h1>Xbox Games</h1>
+        
         <%= table%>
+        
+        <br><br>
+        
+        <a href ="add">Add New Game</a>
+        
     </body>
 </html>

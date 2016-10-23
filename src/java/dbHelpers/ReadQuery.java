@@ -23,6 +23,7 @@ public class ReadQuery {
         
         Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
+        
         try {
             props.load(instr);
         } catch (IOException ex) {
