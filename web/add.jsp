@@ -8,19 +8,19 @@
     <body>
         <h1>Add A New Game</h1>
         
-        <form name ="addForm" action="addGame" method="get">
+        <form name ="addForm" action="addXboxgame" method="get">
             
             <label>Game Title:</label>
-            <input type="text" name="Title" value=""/>
+            <input type="text" name="title" value=""/>
             <br>
             <label>Game ReleaseDate:</label>
-            <input type="text" name="ReleaseDate" value=""/>
+            <input type="text" name="releaseDate" value=""/>
             <br>
             <label>Game Developer:</label>
-            <input type="text" name="Developer" value=""/>
+            <input type="text" name="developer" value=""/>
             <br>
             <label>Game Rating:</label>
-            <input type="text" name="Rating" value=""/>
+            <input type="text" name="rating" value=""/>
             <br>
             <input type="submit" name="submit" value="Submit"/>
             
