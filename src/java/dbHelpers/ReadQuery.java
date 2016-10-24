@@ -99,6 +99,10 @@ public class ReadQuery {
                 table += "<td>";
                 table += xboxgame.getGameRating();
                 table += "</td>";
+
+                table += "<td>";
+                table += "<a href=delete?gameID=" + xboxgame.getGameID() + "> Delete </a>";
+                table += "</td>";      
                 
                 table += "</tr>";  
             }

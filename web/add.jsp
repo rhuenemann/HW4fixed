@@ -13,7 +13,7 @@
             <label>Game Title:</label>
             <input type="text" name="title" value=""/>
             <br>
-            <label>Game ReleaseDate:</label>
+            <label>Game Release Date:</label>
             <input type="text" name="releaseDate" value=""/>
             <br>
             <label>Game Developer:</label>

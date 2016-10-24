@@ -10,15 +10,12 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Xboxgames;
 
-
-
-public class AddQuery {
+public class DeleteQuery {
     
     private Connection conn;
     
-    public AddQuery(){
+    public DeleteQuery(){
         
         Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
@@ -26,12 +23,12 @@ public class AddQuery {
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String driver = props.getProperty("driver.name");
@@ -41,35 +38,33 @@ public class AddQuery {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, passwd);
         } catch (SQLException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
     
-    public void doAdd (Xboxgames xboxgame){
+    public void doDelete (int gameID){
         
         try {
-            String query = "INSERT INTO xboxgames (gameTitle, gameReleaseDate, gameDeveloper, gameRating) VALUES (?, ?, ?, ?)";
+            //set up a string to hold our query
+            String query = "DELETE FROM xboxgames WHERE gameID = ?";
             
+            //create a preparedstatment using out query string
             PreparedStatement ps = conn.prepareStatement(query);
             
-            ps.setString(1, xboxgame.getGameTitle());
-            ps.setInt(2, xboxgame.getGameReleaseDate());
-            ps.setString(3, xboxgame.getGameDeveloper());
-            ps.setString(4, xboxgame.getGameRating());
+            //fill in the preparedstatement
+            ps.setInt(1, gameID);
             
+            //execute the query
             ps.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DeleteQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
         
     }
 }

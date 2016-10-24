@@ -1,6 +1,7 @@
 
 package controller;
 
+import dbHelpers.DeleteQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Rossifer
  */
-@WebServlet(name = "AddForm", urlPatterns = {"/add"})
-public class AddForm extends HttpServlet {
+@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
+public class DeleteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +35,10 @@ public class AddForm extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddForm</title>");            
+            out.println("<title>Servlet DeleteServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddForm at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeleteServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,7 +56,7 @@ public class AddForm extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                doPost(request, response);
+        doPost(request, response);
     }
 
     /**
@@ -70,10 +71,23 @@ public class AddForm extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            String url = "/add.jsp";
+            //get the gameID
+            int gameID = Integer.parseInt(request.getParameter("gameID"));
+            
+            //create a deleteQuery object
+            DeleteQuery dq = new DeleteQuery();
+            
+            //use deleteQuery to delete the object
+            dq.doDelete(gameID);
+            
+            //pass execution on to the ReadServlet
+            String url = "/read";
             
             RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             dispatcher.forward (request, response);
+            
+            
+            
     }
 
     /**
