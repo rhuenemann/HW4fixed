@@ -74,7 +74,7 @@ public class DeleteServlet extends HttpServlet {
             //get the gameID
             int gameID = Integer.parseInt(request.getParameter("gameID"));
             
-            //create a deleteQuery object
+            //create a deleteQuery objecdct
             DeleteQuery dq = new DeleteQuery();
             
             //use deleteQuery to delete the object

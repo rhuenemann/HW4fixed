@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add A New Game</title>
+        <link rel="stylesheet" type="text/css" href="DbColorsCSS.css"/>
     </head>
     <body>
         <h1>Add A New Game</h1>

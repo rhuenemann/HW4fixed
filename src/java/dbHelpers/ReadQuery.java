@@ -67,7 +67,16 @@ public class ReadQuery {
     public String getHTMLtable(){
         
         String table = "";
-        table += "<table border=1>";
+        table += "<table>";
+        
+        table += "<tr>";
+            table += "<th>GameID</th>";
+            table += "<th>GameTitle</th>";
+            table += "<th>GameReleaseDate</th>";
+            table += "<th>GameDeveloper</th>";
+            table += "<th>GameRating</th>";
+            table += "<th>Remove</th>";
+        table += "</tr>";
         
         try {
             while(this.results.next()){
@@ -78,6 +87,7 @@ public class ReadQuery {
                 xboxgame.setGameReleaseDate(this.results.getInt("gameReleaseDate"));
                 xboxgame.setGameDeveloper(this.results.getString("gameDeveloper"));
                 xboxgame.setGameRating(this.results.getString("gameRating"));
+                              
                 
                 table += "<tr>";
                 table += "<td>";

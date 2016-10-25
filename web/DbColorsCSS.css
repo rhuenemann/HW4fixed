@@ -1,0 +1,52 @@
+body{background-color:#D2B48C}
+table, th, td, tr{
+    border: 1px solid black;
+    
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    height: 50px;
+    text-align: left;
+    background-color:#FFFF99
+
+}
+
+td{
+    height: 50px;
+    vertical-align: middle;
+    
+}
+
+th, td{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#CCCCCC}
+
+tr:nth-child(even) {background-color: #F08080}
+tr:nth-child(odd) {background-color: #F08080}
+
+
+form,label{
+    padding: 5px;
+    margin:auto;
+    display:block;
+}
+
+label { 
+    display: inline-block; 
+    width: 150px; 
+    text-align: right; 
+}
+
+input[type=submit] {
+    margin:auto;
+    display:block;
+}
