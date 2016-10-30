@@ -12,7 +12,7 @@
     <body>
         <h1>Xbox Games</h1>
         
-        <%= table%>
+        <%= table %>
         
         <br><br>
         

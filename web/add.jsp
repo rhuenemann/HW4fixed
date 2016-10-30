@@ -9,23 +9,33 @@
     <body>
         <h1>Add A New Game</h1>
         
-        <form name ="addForm" action="addXboxgame" method="get">
+            <table class="add">
+                
+                <tr>                   
+                    <td class="add">Game Title:</td>
+                    <td><input type="text" name="title" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="add">Game Release Date:</td>
+                    <td><input type="text" name="releaseDate" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="add">Game Developer:</td>
+                    <td><input type="text" name="developer" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="add">Game Rating:</td>
+                    <td><input type="text" name="rating" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td><input type="reset" name="reset" value="Clear   "/></td>
+                    <td><input type="submit" name="submit" value="Submit"/></td>
+                </tr>
             
-            <label>Game Title:</label>
-            <input type="text" name="title" value=""/>
-            <br>
-            <label>Game Release Date:</label>
-            <input type="text" name="releaseDate" value=""/>
-            <br>
-            <label>Game Developer:</label>
-            <input type="text" name="developer" value=""/>
-            <br>
-            <label>Game Rating:</label>
-            <input type="text" name="rating" value=""/>
-            <br>
-            <input type="submit" name="submit" value="Submit"/>
-            
-            
-        </form>
+        </table>
     </body>
 </html>

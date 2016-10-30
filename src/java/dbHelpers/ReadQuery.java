@@ -67,7 +67,7 @@ public class ReadQuery {
     public String getHTMLtable(){
         
         String table = "";
-        table += "<table>";
+        table += "<table class=\"read\">";
         
         table += "<tr>";
             table += "<th>GameID</th>";
@@ -111,7 +111,7 @@ public class ReadQuery {
                 table += "</td>";
 
                 table += "<td>";
-                table += "<a href=delete?gameID=" + xboxgame.getGameID() + "> Delete </a>";
+                table += "<a href=update?gameID=" + xboxgame.getGameID() + "> Update </a>" + "<a href=delete?gameID=" + xboxgame.getGameID() + "> Delete </a>";
                 table += "</td>";      
                 
                 table += "</tr>";  
