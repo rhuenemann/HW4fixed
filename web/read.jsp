@@ -6,17 +6,34 @@
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="DbColorsCSS.css"/>
     </head>
-    
-    <% String table = (String) request.getAttribute("table"); %>
-    
+
+    <% String table = (String) request.getAttribute("table");%>
+
     <body>
-        <h1>Xbox Games</h1>
-        
-        <%= table %>
-        
-        <br><br>
-        
-        <a href ="add">Add New Game</a>
-        
+
+        <div class="wrap"> <!--div to hold all other divs -->
+
+            <!--header-->
+            <%@ include file="includes/header.jsp" %>
+
+            <!--menu-->
+            <%@ include file="includes/menu.jsp" %>
+
+            <div class="main">
+                <h1>Xbox Games</h1>
+
+                <%= table%>
+
+                <br><br>
+
+            </div>
+
+
+            <!--footer-->
+            <%@ include file="includes/footer.jsp" %>
+
+        </div> 
+
+
     </body>
 </html>

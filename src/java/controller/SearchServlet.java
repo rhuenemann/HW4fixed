@@ -1,7 +1,11 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
-import dbHelpers.AddQuery;
+import dbHelpers.SearchQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -10,14 +14,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Xboxgames;
 
 /**
  *
  * @author Rossifer
  */
-@WebServlet(name = "AddServlet", urlPatterns = {"/addXboxgame"})
-public class AddServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", urlPatterns = {"/search"})
+public class SearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +39,10 @@ public class AddServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddServlet</title>");            
+            out.println("<title>Servlet SearchServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -72,31 +75,26 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-            //get the data
-            String gameTitle = request.getParameter("title");
-            int gameReleaseDate = Integer.parseInt(request.getParameter("releaseDate"));
-            String gameDeveloper = request.getParameter("developer");
-            String gameRating = request.getParameter("rating");            
-            
-            //set up a xboxgame object
-            Xboxgames xboxgame = new Xboxgames();
-            xboxgame.setGameTitle(gameTitle);
-            xboxgame.setGameReleaseDate(gameReleaseDate);
-            xboxgame.setGameDeveloper(gameDeveloper);
-            xboxgame.setGameRating(gameRating);
-            
-            //set up an addQuery object
-            AddQuery aq = new AddQuery();
-            
-            //pass the xboxgame to addQuery to add the database
-            aq.doAdd(xboxgame);
-            
-            //pass execution control to the ReadServlet
-            String url = "/read";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward (request, response);
-            
+        
+        //Get the text to search
+        String gameTitle = request.getParameter("searchVal");
+        
+        //Create a SearchQuery helper object
+        SearchQuery sq = new SearchQuery();
+        
+        //Get the HTML table from the SearchQuery object
+        sq.doSearch(gameTitle);
+        String table = sq.getHTMLTable();
+        
+        //Pass execution control to read.jsp along with the table.
+        request.setAttribute("table", table);
+        String url = "/read.jsp";
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
+        
+        
+
     }
 
     /**

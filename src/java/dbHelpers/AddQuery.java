@@ -59,6 +59,7 @@ public class AddQuery {
             
             PreparedStatement ps = conn.prepareStatement(query);
             
+            
             ps.setString(1, xboxgame.getGameTitle());
             ps.setInt(2, xboxgame.getGameReleaseDate());
             ps.setString(3, xboxgame.getGameDeveloper());
